@@ -54,7 +54,8 @@ def update_market_loop():
             update_markets()
             delete_old_data()
         except Exception as ex:
-            print("Error in MarketAnalysis: " + str(ex))
+            ex.message = ex.message if ex.message else str(ex)
+            print("Error in MarketAnalysis: {0}".format(ex.message))
         time.sleep(update_interval)
 
 
